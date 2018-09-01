@@ -8,7 +8,7 @@ set -e
 DOCKER_GIT_REPO=lucasbasquerotto/git
 BASE_DIR=/docker
 MAIN_DIR_NAME="$2"
-GIT_CONF_DIR=$BASE_DIR/conf
+GIT_CONF_DIR=$BASE_DIR/.conf
 MAIN_DIR=$BASE_DIR/$MAIN_DIR_NAME
 MAPPED_DIR=/git
 
