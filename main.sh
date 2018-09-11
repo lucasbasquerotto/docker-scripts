@@ -39,8 +39,8 @@ then
   fi
 
   echo "preparing"
+  mainCmd config --global credential.helper store
   mainCmd clone "$GIT_REPO" "$MAIN_DIR_NAME"
-  mainCmd -C "$MAIN_DIR_NAME" config credential.helper store
   echo "prepared"
 fi
 
