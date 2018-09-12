@@ -55,6 +55,6 @@ else
     DOCKER_RUN_OPTIONS="$DOCKER_RUN_OPTIONS -i"
 fi
 
-echo "running docker-compose $@ ..."
+export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
 
 exec docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" $IMAGE "$@"
