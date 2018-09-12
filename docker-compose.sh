@@ -55,6 +55,8 @@ else
     DOCKER_RUN_OPTIONS="$DOCKER_RUN_OPTIONS -i"
 fi
 
-export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
+DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
 
-exec docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" $IMAGE "$@"
+echo "DOCKER_HOST_IP: $DOCKER_HOST_IP"
+
+exec docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" --env DOCKER_HOST_IP=$DOCKER_HOST_IP $IMAGE "$@"
