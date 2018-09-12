@@ -55,6 +55,6 @@ else
     DOCKER_RUN_OPTIONS="$DOCKER_RUN_OPTIONS -i"
 fi
 
-DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
+DOCKER_HOST_IP=$(ifconfig docker0 | grep "inet addr" | sed -r "s/.*inet addr:([0-9.]*).*$/\1/")
 
 exec docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" --env DOCKER_HOST_IP=$DOCKER_HOST_IP $IMAGE "$@"
