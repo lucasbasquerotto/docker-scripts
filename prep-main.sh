@@ -14,6 +14,7 @@ main update .tmp "$VERSION"
 
 echo "pulling up-to-date images..."
 cd /docker/.tmp
-docker-compose build --pull
+docker-compose pull
+docker-compose build
 
 echo "preparation finished"
