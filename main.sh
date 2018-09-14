@@ -63,6 +63,6 @@ then
   echo "updating to version $VERSION"
   mainCmd -C "$MAIN_DIR_NAME" fetch
   mainCmd -C "$MAIN_DIR_NAME" reset --hard
-  mainCmd -C "$MAIN_DIR_NAME" checkout tags/"$VERSION"
+  mainCmd -C "$MAIN_DIR_NAME" checkout -f tags/"$VERSION"
   echo "updated"
 fi
