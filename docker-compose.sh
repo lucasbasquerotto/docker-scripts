@@ -55,7 +55,8 @@ else
     DOCKER_RUN_OPTIONS="$DOCKER_RUN_OPTIONS -i"
 fi
 
-DOCKER_HOST_IP=$(ip -4 addr show docker0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+DOCKER_HOST_IP=$(/bin/ip -4 addr show docker0 | /bin/grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+#DOCKER_HOST_IP=$(ip -4 addr show docker0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 #DOCKER_HOST_IP=$(ifconfig docker0 | grep "inet addr" | sed -r "s/.*inet addr:([0-9.]*).*$/\1/")
 #DOCKER_HOST_IP=$(ip addr|awk '/docker0/ && /inet/ {gsub(/\/[0-9][0-9]/,""); print $2}')
 
