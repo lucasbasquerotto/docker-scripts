@@ -16,6 +16,11 @@ function mainCmd() {
   docker run -it --rm -v $GIT_CONF_DIR:/root -v $BASE_DIR:/git $DOCKER_GIT_REPO "$@"
 }
 
+function updatePermissions() {
+  docker run -it --rm -v $BASE_DIR:$BASE_DIR alpine find $BASE_DIR/$MAIN_DIR_NAME -type f -exec chmod 640 {} \;
+  docker run -it --rm -v $BASE_DIR:$BASE_DIR alpine find $BASE_DIR/$MAIN_DIR_NAME -type d -exec chmod 777 {} \;
+}
+
 if [ $# -eq 0 ]
 then
   echo "No arguments supplied"
