@@ -46,6 +46,7 @@ then
   echo "preparing"
   mainCmd config --global credential.helper store
   mainCmd clone "$GIT_REPO" "$MAIN_DIR_NAME"
+  updatePermissions
   echo "prepared"
 fi
 
@@ -69,5 +70,6 @@ then
   mainCmd -C "$MAIN_DIR_NAME" fetch
   mainCmd -C "$MAIN_DIR_NAME" clean -f -d
   mainCmd -C "$MAIN_DIR_NAME" checkout -f tags/"$VERSION"
+  updatePermissions
   echo "updated"
 fi
