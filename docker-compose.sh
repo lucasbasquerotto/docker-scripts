@@ -56,4 +56,7 @@ fi
 
 DOCKER_HOST_IP=$(ip -4 addr show docker0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
+find . -type d -exec chmod 777 {} \;
+find . -type f -exec chmod 640 {} \;
+
 exec docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" --env DOCKER_HOST_IP=$DOCKER_HOST_IP $IMAGE "$@"
